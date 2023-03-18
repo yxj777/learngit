@@ -4,7 +4,7 @@
 - 分区表（partition table）:记录硬盘分区状态，64B,最多四组记录区
 	- 四组信息分为主要（Primary）和延伸（Extended）分区，延伸分区只能有一个
 	- 逻辑分区（logical partition）：延伸分区切割出来的分区，依系统而不同，SATA可突破63个以上
-![Alt text](images/2023-03-14-19-04-33.png)
+![Alt text](../images/2023-03-14-19-04-33.png)
 ## GUDI partition table,GPT磁盘分区表
 GPT将磁盘所有区块以LBA（默认为512B）来规划，第一个LBA为LBA0，用34个记录记录分区信息，磁盘最后的33个LBA用来备份
 - LBA0(MBR相容区块)：跟MBR一样，有两个部分
@@ -19,4 +19,4 @@ GPT将磁盘所有区块以LBA（默认为512B）来规划，第一个LBA为LBA0
   - 每个LBA有512B，每个LBA可记录4笔分区
   - 可有128笔分区,每笔用128Bytes，其中64bits用来记录开始/结束的扇区号码
 
-![Alt text](images/2023-03-14-19-06-25.png)
+![Alt text](../images/2023-03-14-19-06-25.png)
