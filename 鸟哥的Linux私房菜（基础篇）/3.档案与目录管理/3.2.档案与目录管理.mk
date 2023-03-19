@@ -1,5 +1,5 @@
 ## 档案与目录管理
-- ls（文件与目录的查看）
+- ### ls（文件与目录的查看）
   ```
   ls [-aAdfFhilnrRSt]  文件名或目录名称
   ls [--color={never,auto,always}]  文件名或目录名称
@@ -25,7 +25,7 @@
   --full-time    ：以完整时间模式 （包含年、月、日、时、分） 输出
   --time={atime,ctime} ：输出 access 时间或改变权限属性时间 （ctime）而非内容变更时间 （modification time）
   ```
-- cp（复制文件或目录）
+- ### cp（复制文件或目录）
   ```
   cp [-adfilprsu]  来源文件（source）  目标文件（destination）
   cp [options]  source1  source2  source3   directory
@@ -42,7 +42,7 @@
   --preserve=all ：除了 -p 的权限相关参数外，还加入 SELinux 的属性, links, xattr 等也复制了。
   如果来源文件有两个以上，则最后一个目的文件一定要是“目录”才行！
   ```
-- rm（移动文件与目录，或更名）
+- ### rm（移动文件与目录，或更名）
   ```
   mv  [-fiu]  source  destination
   mv [options]  source1  source2  source3  directory
@@ -51,12 +51,12 @@
   -i  ：若目标文件 （destination） 已经存在时，就会询问是否覆盖！
   -u  ：若目标文件已经存在，且 source 比较新，才会更新 （update）
   ```
-- basename（取得路径的文件名称）
+- ### basename（取得路径的文件名称）
   ```
   basename  /etc/sysconfig/network
   network         取得最后的文件名
   ```
-- dirname （取得目录名称）
+- ### dirname （取得目录名称）
   ```
   dirname  /etc/sysconfig/network
   /etc/sysconfig   取得目录名
