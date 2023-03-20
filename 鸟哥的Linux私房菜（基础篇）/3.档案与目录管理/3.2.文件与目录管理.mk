@@ -25,6 +25,22 @@
   --full-time    ：以完整时间模式 （包含年、月、日、时、分） 输出
   --time={atime,ctime} ：输出 access 时间或改变权限属性时间 （ctime）而非内容变更时间 （modification time）
   ```
+  ```
+  [[email protected] ~]# ls -al
+  total 48
+  dr-xr-x---.   5     root     root    4096   May 29 16:08   .
+  dr-xr-xr-x.  17     root     root    4096   May  4 17:56   ..
+  -rw-------.   1     root     root    1816   May  4 17:57   anaconda-ks.cfg
+  -rw-------.   1     root     root     927   Jun  2 11:27   .bash_history
+  -rw-r--r--.   1     root     root      18   Dec 29  2013   .bash_logout
+  -rw-r--r--.   1     root     root     176   Dec 29  2013   .bash_profile
+  -rw-r--r--.   1     root     root     176   Dec 29  2013   .bashrc
+  drwxr-xr-x.   3     root     root      17   May  6 00:14   .config               &lt;=范例说明处
+  drwx------.   3     root     root      24   May  4 17:59   .dbus
+  -rw-r--r--.   1     root     root    1864   May  4 18:01   initial-setup-ks.cfg  &lt;=范例说明处
+  [    1    ] [ 2 ]  [  3 ]   [  4 ]  [  5 ]  [     6     ]  [       7          ]
+  [  权限   ] [链接] [拥有者]  [群组] [文件大小][ 修改日期  ]  [      文件名        ]
+  ```
 - ### cp（复制文件或目录）
   ```
   cp [-adfilprsu]  来源文件（source）  目标文件（destination）

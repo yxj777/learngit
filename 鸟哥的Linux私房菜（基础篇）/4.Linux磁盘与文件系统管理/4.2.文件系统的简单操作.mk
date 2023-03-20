@@ -45,6 +45,12 @@
     - 使用 -S 列出目录下的全部资料，可减少次目录的加总
 ---
 ## ln：实体链接与符号链接
+```
+[[email protected] ~]# ln [-sf] 来源文件 目标文件
+选项与参数：
+-s  ：如果不加任何参数就进行链接，那就是hard link，至于 -s 就是symbolic link
+-f  ：如果 目标文件 存在时，就主动的将目标文件直接移除后再创建！
+```
 - ### Hard Link（物理链接，硬式链接或实际链接）
   - 多个文件名对应到同一个 inode 号码
     - 在某个目录下新增一笔文件名链接到某 inode 号码的关连记录 
@@ -63,10 +69,27 @@
       - 还要链接目录中的内容，太过复杂
 - ### Symbolic Link（符号链接，快捷方式）
   - 创建一个独立的文件，让数据的读取指向 link 的那个文件的文件名
+  - 所创建的为独立新文件，占用inode与block
     ```
     [[email protected] ~]# ln -s /etc/crontab crontab2
     [[email protected] ~]# ll -i /etc/crontab /root/crontab2
     34474855 -rw-r--r--. 2 root root 451 Jun 10  2014 /etc/crontab
-    53745909 lrwxrwxrwx. 1 root root  12 Jun 23 22:31 /root/crontab2 -&gt; /etc/crontab
+    53745909 lrwxrwxrwx. 1 root root  12 Jun 23 22:31 /root/crontab2 --> /etc/crontab
     ```
   - ![](../images/2023-03-19-20-31-19.png)
+- ### 目录的 link 数量
+  - 当我们创建一个新的目录时， “新的目录的 link 数为 2 ，而上层目录的 link 数则会增加 1 
+  - 当创建新目录名为 /tmp/testing，会有
+    - /tmp/testing
+    - /tmp/testing/.
+    - /tmp/testing/..
+  - /tmp/testing 与 /tmp/testing/. 代表该目录，/tmp/testing/.. 代表/tmp目录
+  ```
+  [[email protected] ~]# ls -ld /tmp
+  drwxrwxrwt. 14 root root 4096 Jun 23 22:42 /tmp
+  [[email protected] ~]# mkdir /tmp/testing1
+  [[email protected] ~]# ls -ld /tmp
+  drwxrwxrwt. 15 root root 4096 Jun 23 22:45 /tmp   # 这里的 link 数量加 1 了
+  [[email protected] ~]# ls -ld /tmp/testing1
+  drwxr-xr-x. 2 root root 6 Jun 23 22:45 /tmp/testing1/
+  ```
