@@ -183,7 +183,7 @@ inode/block/superblock 系统
       - 建议extent设定为与 stripe 一样大
 - ### XFS 文件系统的描述数据观察
   ```
-  [root@study ~]# xfs_info  挂载点&#124;设备文件名
+  [root@study ~]# xfs_info  挂载点 ;设备文件名
 
   范例一：找出系统 /boot 这个挂载点下面的文件系统的 superblock 纪录
   [root@study ~]# df -T /boot

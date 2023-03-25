@@ -218,3 +218,81 @@ mkfs.bfs     mkfs.ext2    mkfs.ext4    mkfs.minix   mkfs.ntfs    mkfs.xfs
   - 根目录不能被卸载
   - 当根目录挂载参数要改变，或者出现“只读“状态
     - 可以通过重新开机（reboot），或者重新挂载
+        ```
+        范例：将 / 重新挂载，并加入参数为 rw 与 auto
+        [[email protected] ~]# mount -o remount,rw,auto /
+        ```
+  - 将某个目录挂载到另外一个目录
+    ```
+    范例：将 /var 这个目录暂时挂载到 /data/var 下面：
+    [[email protected] ~]# mkdir /data/var
+    [[email protected] ~]# mount --bind /var /data/var
+    [[email protected] ~]# ls -lid /var /data/var
+    16777346 drwxr-xr-x. 22 root root 4096 Jun 15 23:43 /data/var
+    16777346 drwxr-xr-x. 22 root root 4096 Jun 15 23:43 /var
+    ```
+- ### umount ：将设备文件卸载
+    ```
+    [[email protected] ~]# umount [-fn] 设备文件名或挂载点
+    选项与参数：
+    -f  ：强制卸载！可用在类似网络文件系统 （NFS） 无法读取到的情况下；
+    -l  ：立刻卸载文件系统，比 -f 还强！
+    -n  ：不更新 /etc/mtab 情况下卸载。
+    ```
+   - 当退出U盘等设备，发生“你正在使用该文件系统“，使用“cd /”回到根目录
+    ```
+    [[email protected] ~]# mount /dev/sr0 /data/cdrom
+    [[email protected] ~]# cd /data/cdrom
+    [[email protected] cdrom]# umount /data/cdrom
+    umount: /data/cdrom: target is busy.
+            （In some cases useful info about processes that use
+            the device is found by lsof（8） or fuser（1））
+
+    [[email protected] cdrom]# cd /
+    [[email protected] /]# umount /data/cdrom
+
+    ```
+---
+## 磁盘/文件系统参数修订
+- ### mknod : 创建块设备文件和字符设备文件
+    ```
+    [[email protected] ~]# mknod 设备文件名 [bcp] [Major] [Minor]
+    选项与参数：
+    设备种类：
+    b  ：设置设备名称成为一个块设备文件，例如磁盘等；
+    c  ：设置设备名称成为一个字符设备文件，例如鼠标/键盘等；
+    p  ：设置设备名称成为一个 FIFO 文件；
+    Major ：主要设备代码；
+    Minor ：次要设备代码；
+    ```
+    ```
+    范例：查找/dev/nvme0n的设备码，并创建和查阅/dev/nvme0n1p14设备
+    root@yxj-computer:~# ll /dev/nvme0n*
+    brw-rw---- 1 root disk 259,  0  3月 25 10:12 /dev/nvme0n1
+    brw-rw---- 1 root disk 259,  1  3月 25 10:12 /dev/nvme0n1p1
+    brw-rw---- 1 root disk 259, 10  3月 25 10:12 /dev/nvme0n1p10
+    brw-rw---- 1 root disk 259, 11  3月 25 10:12 /dev/nvme0n1p11
+    brw-rw---- 1 root disk 259, 12  3月 25 10:12 /dev/nvme0n1p12
+
+    root@yxj-computer:~# mknod /dev/nvme0n1p14 b 259 14
+    root@yxj-computer:~# ll /dev/nvme0n1p14
+    brw-r--r-- 1 root root 259, 14  3月 25 10:14 /dev/nvme0n1p14
+
+    ```
+  - ### xfs_admin 修改 XFS 文件系统的 UUID 与 Label name
+    ```
+    [[email protected] ~]# xfs_admin [-lu] [-L label] [-U uuid] 设备文件名
+    选项与参数：
+    -l  ：列出这个设备的 label name
+    -u  ：列出这个设备的 UUID
+    -L  ：设置这个设备的 Label name
+    -U  ：设置这个设备的 UUID 
+    ```
+  - ### tune2fs 修改 ext4 的 label name 与 UUID
+    ```
+    [[email protected] ~]# tune2fs [-l] [-L Label] [-U uuid] 设备文件名
+    选项与参数：
+    -l  ：superblock 内的数据读出来
+    -L  ：修改 LABEL name
+    -U  ：修改 UUID
+    ```
