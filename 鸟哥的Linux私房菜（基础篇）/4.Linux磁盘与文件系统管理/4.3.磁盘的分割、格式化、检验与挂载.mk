@@ -41,7 +41,7 @@
     /dev/mapper/centos-home: UUID="29979bf1-4a28-48e0-be4a-66329bf727d9" TYPE="xfs"
 
     ```
-- ### parted：列出磁盘的分区表类型与分区信息
+- ### parted：列出磁盘的分区表类型与分区信息（也可以用来分区）
     ```
     root@yxj-computer:~# parted /dev/nvme0n1 print
     型号：BC711 NVMe SK hynix 512GB (nvme)
@@ -176,7 +176,8 @@ mkfs.bfs     mkfs.ext2    mkfs.ext4    mkfs.minix   mkfs.ntfs    mkfs.xfs
       exec, noexec:  是否允许此 filesystem 上拥有可执行 binary 文件？
       user, nouser:  是否允许此 filesystem 让任何使用者执行 mount ？一般来说，
                      mount 仅有 root 可以进行，但下达 user 参数，则可让
-                     一般 user 也能够对此 partition 进行 mount 。
+                     一般 user 也能够对此 partition 进行 mount 
+      loop :         使用 loop 模式用来将一个档案当成硬盘分割挂上系统        
       defaults:      默认值为：rw, suid, dev, exec, auto, nouser, and async
       remount:       重新挂载，这在系统出错，或重新更新参数时，很有用！
 ```
