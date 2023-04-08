@@ -266,14 +266,15 @@ file locks                      (-x) unlimited
 - ### 变量内容的删除与取代
   - ![](../images/2023-04-07-11-06-27.png)
     ```
-    [dmtsai@study ~]$ echo ${path}
-    /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/dmtsai/.local/bin:/home/dmtsai/bin
-    範例二：假設我不喜歡 local/bin，所以要將前 1 個目錄刪除掉，如何顯示？
-    [dmtsai@study ~]$ echo ${path#/*local/bin:}
-    /usr/bin:/usr/local/sbin:/usr/sbin:/home/dmtsai/.local/bin:/home/dmtsai/bin
+    [root@www ~]# echo $path
+    /usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:
+    /usr/sbin:/usr/bin:/root/bin
+
+    范例一：删除 kerberos
+    [root@www ~]# echo ${path#/*kerberos/bin:}
+    /usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
     ```
 - ### 变量的测试与内容替换
   - ![](../images/2023-04-07-11-13-21.png)
-
 
 
