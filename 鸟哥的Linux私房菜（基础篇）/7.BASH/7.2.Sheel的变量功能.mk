@@ -164,7 +164,7 @@
   declare -x LANG="zh_TW.UTF-8"
   declare -x LC_ALL="en_US.utf8"
   ```
-  ## 语系变量 （locale）
+## 语系变量 （locale）
   ```
   [root@www ~]# locale  <==后面不加任何选项与参数即可！
   LANG=en_US                   <==主语言的环境
