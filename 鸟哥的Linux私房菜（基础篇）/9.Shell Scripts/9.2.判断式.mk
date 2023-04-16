@@ -1,5 +1,5 @@
 ## test指令的测试功能
-- win长截图
+- ![](../images/2023-04-16-11-10-10.png)
 ```
 yxj@yxj-computer:~/bin$ vim file_perm.sh
 
@@ -116,12 +116,20 @@ yxj@yxj-computer:~/bin$ sh how_paras.sh one two three
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-echo "Total parameter number is ==> $#"
-echo "Your whole parameter is   ==> '$@'"
+echo "参数的个数 ==> $#"
+echo "全部参数   ==> '$@'"
 shift
-echo "Total parameter number is ==> $#"
-echo "Your whole parameter is   ==> '$@'"
+echo "参数的个数 ==> $#"
+echo "全部参数   ==> '$@'"
 shift 3
-echo "Total parameter number is ==> $#"
-echo "Your whole parameter is   ==> '$@'"
+echo "参数的个数 ==> $#"
+echo "全部参数   ==> '$@'"
+
+yxj@yxj-computer:~/bin$ sh shift_paras.sh one two three four five six
+参数的个数 ==> 6
+全部参数   ==> 'one two three four five six'
+参数的个数 ==> 5
+全部参数   ==> 'two three four five six'
+参数的个数 ==> 2
+全部参数   ==> 'five six'
 ```
