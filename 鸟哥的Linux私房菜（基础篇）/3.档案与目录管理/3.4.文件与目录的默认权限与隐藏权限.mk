@@ -90,3 +90,22 @@
   file /var/lib/mlocate/mlocate.db
   /var/lib/mlocate/mlocate.db: data       这是 data 文件！
   ```
+---
+## 账号管理实例
+- 我的用户 pro1， pro2， pro3 是同一个项目计划的开发人员，我想要让这三个用户在同一个目录底下工作， 但这三个用户还是拥有自己的家目录与基本的私有群组。 假设我要让这个项目计划在 /srv/projecta 目录下开发， 可以如何进行
+```
+[root@study ~]# groupadd projecta
+[root@study ~]# useradd -G projecta -c "projecta user" pro1
+[root@study ~]# useradd -G projecta -c "projecta user" pro2
+[root@study ~]# useradd -G projecta -c "projecta user" pro3
+[root@study ~]# echo "password" | passwd --stdin pro1
+[root@study ~]# echo "password" | passwd --stdin pro2
+[root@study ~]# echo "password" | passwd --stdin pro3
+
+[root@study ~]# mkdir /srv/projecta
+[root@study ~]# chgrp projecta /srv/projecta
+[root@study ~]# chmod 2770 /srv/projecta
+[root@study ~]# ll -d /srv/projecta
+drwxrws---. 2 root projecta 6 Jul 20 23:32 /srv/projecta
+#权限2770为SGID，
+```
