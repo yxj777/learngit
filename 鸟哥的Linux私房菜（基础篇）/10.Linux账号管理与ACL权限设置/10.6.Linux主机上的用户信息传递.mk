@@ -61,3 +61,40 @@ EOF
     ```
     root@yxj-computer:~# wall "Hello,my name is root"
     ```
+## 邮箱：mail
+```
+#范例：发信
+mail -s “邮件标题” username@localhost 
+```
+```
+#范例
+[root@study ~]# mail -s "Mail test1" vbird1
+This is mail test1
+EOT
+```
+- 收信直接使用mail
+```
+#范例：收信
+yxj@yxj-computer:~$ mail
+"/var/mail/yxj": 4 messages 4 new
+>N   1 root               日 5月 14 08:5  18/457   mail_test1
+ N   2 root               日 5月 14 08:5  16/412   mail_test2
+ N   3 root               日 5月 14 09:0  20/415   mail_test2
+ N   4 root               日 5月 14 09:0  17/426   mail_test3
+? 
+
+```
+```
+#范例：指令帮助
+? ?
+a[lias] [alias [address...]]
+alt[ernates] name...
+C[opy] [msglist]
+cd [directory]
+ch[dir] directory
+c[opy] [[msglist] file]
+dec[ode] [msglist]
+d[elete] [msglist]
+```
+  - msglist指每封邮件左边的数字
+  - ![](../images/2023-05-14-10-01-40.png)

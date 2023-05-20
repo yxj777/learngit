@@ -119,3 +119,4 @@ vbird1    hard        fsize        100000
 ```
   - 因修改完成的数据，对于已登陆系统中的使用者是没有效果的，再次登陆时才会生效
 - ### /var/log/secure, /var/log/messages
+  - PAM模块将资料记载在 /var/log/secure 当中，发生了问题到该目录查询
