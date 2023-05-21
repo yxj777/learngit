@@ -58,7 +58,7 @@
   --preserve=all ：除了 -p 的权限相关参数外，还加入 SELinux 的属性, links, xattr 等也复制了。
   如果来源文件有两个以上，则最后一个目的文件一定要是“目录”才行！
   ```
-- ### rm（移动文件与目录，或更名）
+- ### mv（移动文件与目录，或更名）
   ```
   mv  [-fiu]  source  destination
   mv [options]  source1  source2  source3  directory
